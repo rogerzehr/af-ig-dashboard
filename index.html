@@ -4,53 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Force IG Dashboard - CCIP Visibility Tool</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-    <!-- Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <!-- Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .card {
-            transition: all 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border-left-color: #09f;
-            animation: spin 1s linear infinite;
-            display: none;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .collapsible-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .collapsed .collapsible-content {
-            max-height: 1000px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 font-sans">
-    <!-- Main Container -->
     <div class="min-h-screen flex flex-col">
-        <!-- Header -->
         <header class="bg-blue-900 text-white shadow-lg">
             <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="/api/placeholder/50/50" alt="AF Logo" class="h-10 mr-3">
+                    <img src="https://placehold.co/50x50/ffffff/000000?text=AF" alt="AF Logo" class="h-10 w-10 rounded-full mr-3">
                     <div>
                         <h1 class="text-xl font-bold">AF Inspector General Dashboard</h1>
-                        <p class="text-sm text-blue-200" id="unitName">325th Fighter Wing</p>
+                        <p class="text-sm text-blue-200" id="unitName">Unit Name Placeholder</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -66,12 +33,9 @@
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="flex-grow container mx-auto px-4 py-6">
-            <!-- Dashboard Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                
-                <!-- Compliance Snapshot Panel -->
+
                 <div class="card bg-white rounded-lg shadow-md p-5">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-gray-800">
@@ -85,52 +49,46 @@
                         <div class="mb-4">
                             <p class="text-sm text-gray-600 mb-1">Self-Assessment Completion</p>
                             <div class="w-full bg-gray-200 rounded-full h-4">
-                                <div id="completionBar" class="bg-green-500 rounded-full h-4" style="width: 68%"></div>
+                                <div id="completionBar" class="bg-green-500 rounded-full h-4" style="width: 0%"></div>
                             </div>
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>68% Complete</span>
-                                <span>24 of 35 Programs</span>
+                                <span id="completionText">0% Complete</span>
+                                <span id="programsText">0 of 0 Programs</span>
                             </div>
                         </div>
-                        
+
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div class="bg-red-50 p-3 rounded-lg border border-red-100">
                                 <h3 class="text-sm font-semibold text-gray-700">Open Deficiencies</h3>
                                 <div class="flex justify-between items-center mt-2">
-                                    <span class="text-2xl font-bold text-red-600" id="deficienciesCount">17</span>
+                                    <span class="text-2xl font-bold text-red-600" id="deficienciesCount">0</span>
                                     <span class="text-sm text-red-500">
-                                        <i class="fas fa-arrow-up"></i> 4 from last week
+                                        <i class="fas fa-arrow-up"></i> <span id="deficienciesChange">0</span> from last week
                                     </span>
                                 </div>
                             </div>
                             <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100">
                                 <h3 class="text-sm font-semibold text-gray-700">High Risk Items</h3>
                                 <div class="flex justify-between items-center mt-2">
-                                    <span class="text-2xl font-bold text-yellow-600" id="highRiskCount">5</span>
+                                    <span class="text-2xl font-bold text-yellow-600" id="highRiskCount">0</span>
                                     <span class="text-sm text-yellow-500">
-                                        <i class="fas fa-exclamation-triangle"></i> 2 Critical
+                                        <i class="fas fa-exclamation-triangle"></i> <span id="criticalCount">0</span> Critical
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
                             <h3 class="text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-robot mr-1 text-blue-500"></i> AI-Generated Summary
                             </h3>
                             <div class="text-sm text-gray-600" id="aiSummary">
-                                <p><strong>Top 3 Recurring Issues:</strong></p>
-                                <ol class="list-decimal pl-5 mt-1">
-                                    <li>Documentation management compliance issues across 4 squadrons (MX, OPS)</li>
-                                    <li>Training records discrepancies for high-risk tasks (3 units affected)</li>
-                                    <li>Safety protocol implementation gaps in maintenance procedures</li>
-                                </ol>
+                                <p class="italic text-gray-400">Loading summary...</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Readiness & Trends Panel -->
+
                 <div class="card bg-white rounded-lg shadow-md p-5">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-gray-800">
@@ -145,11 +103,7 @@
                             <div>
                                 <select id="squadronFilter" class="border border-gray-300 rounded px-2 py-1 text-sm">
                                     <option value="all">All Squadrons</option>
-                                    <option value="fighter">Fighter Squadron</option>
-                                    <option value="maintenance">Maintenance Squadron</option>
-                                    <option value="medical">Medical Squadron</option>
-                                    <option value="support">Support Squadron</option>
-                                </select>
+                                    </select>
                             </div>
                             <div class="flex items-center">
                                 <span class="text-xs text-gray-500 mr-2">Show Predictions</span>
@@ -159,33 +113,16 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="h-64 mb-4">
                             <canvas id="trendsChart"></canvas>
                         </div>
-                        
-                        <div class="grid grid-cols-4 gap-2 text-center">
-                            <div class="p-2 rounded bg-blue-50">
-                                <div class="text-xs text-gray-500">Managing Resources</div>
-                                <div class="font-bold text-blue-700">85%</div>
+
+                        <div class="grid grid-cols-4 gap-2 text-center" id="readinessScores">
                             </div>
-                            <div class="p-2 rounded bg-green-50">
-                                <div class="text-xs text-gray-500">Leading People</div>
-                                <div class="font-bold text-green-700">92%</div>
-                            </div>
-                            <div class="p-2 rounded bg-yellow-50">
-                                <div class="text-xs text-gray-500">Improving Unit</div>
-                                <div class="font-bold text-yellow-700">78%</div>
-                            </div>
-                            <div class="p-2 rounded bg-purple-50">
-                                <div class="text-xs text-gray-500">Executing Mission</div>
-                                <div class="font-bold text-purple-700">88%</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                
-                <!-- Automation Tools Panel -->
+
                 <div class="card bg-white rounded-lg shadow-md p-5">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-gray-800">
@@ -201,32 +138,32 @@
                                 <i class="fas fa-magic mr-1"></i> Generate Corrective Actions
                             </button>
                             <button id="syncMICT" class="flex-1 bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 transition flex items-center justify-center">
-                                <i class="fas fa-sync-alt mr-1"></i> 
+                                <i class="fas fa-sync-alt mr-1"></i>
                                 <span>Sync MICT Status</span>
                                 <div class="spinner ml-2" id="syncSpinner"></div>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
                                 <h3 class="text-sm font-semibold text-gray-700 mb-2">Automation Status</h3>
-                                <div class="text-sm text-gray-600">
+                                <div class="text-sm text-gray-600" id="automationStatus">
                                     <div class="flex items-center mb-1">
-                                        <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                                        <span>Last MICT Sync: Today, 08:45</span>
+                                        <div class="w-3 h-3 rounded-full bg-gray-400 mr-2"></div>
+                                        <span>Last MICT Sync: N/A</span>
                                     </div>
                                     <div class="flex items-center mb-1">
-                                        <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                                        <span>Last IGEMS Update: Yesterday, 16:30</span>
+                                        <div class="w-3 h-3 rounded-full bg-gray-400 mr-2"></div>
+                                        <span>Last IGEMS Update: N/A</span>
                                     </div>
                                     <div class="flex items-center">
-                                        <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                                        <span>AI Model Status: Operational</span>
+                                        <div class="w-3 h-3 rounded-full bg-gray-400 mr-2"></div>
+                                        <span>AI Model Status: Unknown</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div>
                             <h3 class="text-sm font-semibold text-gray-700 mb-2">Recommendations</h3>
                             <div class="bg-white border border-gray-200 rounded-lg p-3 text-sm text-gray-700 h-40 overflow-y-auto" id="recommendationsOutput">
@@ -235,8 +172,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- AI Insights Panel -->
+
                 <div class="card bg-white rounded-lg shadow-md p-5">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-gray-800">
@@ -258,7 +194,7 @@
                                 <p class="text-xs text-gray-400 mt-2">PDF, TXT, DOCX formats supported</p>
                             </div>
                         </div>
-                        
+
                         <div class="grid grid-cols-1 gap-4 mb-4">
                             <div>
                                 <h3 class="text-sm font-semibold text-gray-700 mb-2">AI Extracted Insights</h3>
@@ -269,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="flex space-x-2">
                             <button id="generateTalkingPoints" class="flex-1 bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition">
                                 <i class="fas fa-comment-dots mr-1"></i> Generate IG Talking Points
@@ -282,8 +218,7 @@
                 </div>
 
             </div>
-            
-            <!-- Bottom Section: Deficiency Detail View -->
+
             <div class="mt-6 bg-white rounded-lg shadow-md p-5">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-800">
@@ -316,15 +251,13 @@
                                 </tr>
                             </thead>
                             <tbody class="text-xs text-gray-600" id="deficiencyTableBody">
-                                <!-- Deficiency rows will be populated via JavaScript -->
-                            </tbody>
+                                </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- Footer -->
         <footer class="bg-gray-800 text-white py-4">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row justify-between items-center">
@@ -341,522 +274,6 @@
         </footer>
     </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Mock Data
-        const mockData = {
-            unit: {
-                name: "325th Fighter Wing",
-                location: "Tyndall AFB",
-                commanderName: "Col. James Wilson",
-            },
-            compliance: {
-                programs: 35,
-                completedPrograms: 24,
-                completionPercentage: 68,
-                openDeficiencies: 17,
-                highRiskItems: 5,
-                criticalItems: 2
-            },
-            trends: {
-                months: ["Dec", "Jan", "Feb", "Mar", "Apr", "May"],
-                managingResources: [78, 80, 82, 79, 83, 85],
-                leadingPeople: [85, 87, 90, 91, 89, 92],
-                improvingUnit: [72, 70, 74, 75, 77, 78],
-                executingMission: [80, 82, 84, 85, 87, 88],
-                predictions: {
-                    managingResources: [85, 87],
-                    leadingPeople: [92, 93],
-                    improvingUnit: [78, 80],
-                    executingMission: [88, 90]
-                }
-            },
-            deficiencies: [
-                { id: "IG-2025-001", description: "Safety equipment inspection records incomplete", squadron: "Fighter", status: "Open", riskLevel: "Critical", dueDate: "2025-05-30" },
-                { id: "IG-2025-007", description: "Training documentation non-compliant with AFI 36-2651", squadron: "Maintenance", status: "Open", riskLevel: "Significant", dueDate: "2025-06-15" },
-                { id: "IG-2025-013", description: "Security protocols for restricted area access not followed", squadron: "Support", status: "In Progress", riskLevel: "Critical", dueDate: "2025-05-22" },
-                { id: "IG-2025-018", description: "Radiation safety procedures not properly documented", squadron: "Medical", status: "Open", riskLevel: "Significant", dueDate: "2025-06-10" },
-                { id: "IG-2025-024", description: "Tool accountability process deficiencies", squadron: "Maintenance", status: "In Progress", riskLevel: "Significant", dueDate: "2025-05-25" },
-                { id: "IG-2025-026", description: "Emergency response checklists outdated", squadron: "All", status: "Open", riskLevel: "Significant", dueDate: "2025-06-05" },
-                { id: "IG-2025-029", description: "FOD prevention program documentation incomplete", squadron: "Maintenance", status: "Open", riskLevel: "Minor", dueDate: "2025-06-20" }
-            ],
-            aiRecommendations: [
-                "Implement a centralized tracking system for safety equipment inspections with automated reminders.",
-                "Conduct specialized training session for all Unit Training Managers on AFI 36-2651 compliance requirements.",
-                "Develop a digital checklist app for security personnel to ensure all protocols are followed consistently.",
-                "Establish monthly radiation safety documentation review cycle with designated officer accountability.",
-                "Deploy barcode-based tool accountability system synced with maintenance management system."
-            ],
-            aiInsights: {
-                keyThemes: [
-                    "Documentation processes need standardization across all squadrons",
-                    "Digital transformation of manual inspection processes would improve compliance",
-                    "Training deficiencies correlate with higher risk in operational areas"
-                ],
-                sentiment: "Moderately Concerning",
-                recommendedFocus: "Training documentation and safety protocol implementation"
-            },
-            talkingPoints: [
-                "Critical safety inspection documentation gaps identified across 3 squadrons - recommend Wing-level standardized process implementation",
-                "Training record compliance improved 12% over last quarter but still below MAJCOM average - targeted UTM training in progress",
-                "Automated tracking tools demonstrating 30% reduction in recurring deficiencies where implemented - recommend expanded deployment"
-            ]
-        };
-
-        // Initialize page on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current date
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
-            
-            // Initialize collapsible panels
-            document.querySelectorAll('.toggle-collapse').forEach(button => {
-                button.addEventListener('click', function() {
-                    const cardElement = this.closest('.card');
-                    cardElement.classList.toggle('collapsed');
-                    
-                    // Toggle the chevron icon
-                    const icon = this.querySelector('i');
-                    if (cardElement.classList.contains('collapsed')) {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                });
-                
-                // Start with panels expanded
-                button.click();
-            });
-            
-            // Initialize Trends Chart
-            initTrendsChart();
-            
-            // Initialize deficiency table
-            populateDeficiencyTable();
-            
-            // Set up event listeners
-            setupEventListeners();
-        });
-
-        // Initialize Trends Chart
-        function initTrendsChart() {
-            const ctx = document.getElementById('trendsChart').getContext('2d');
-            
-            window.trendsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: mockData.trends.months,
-                    datasets: [
-                        {
-                            label: 'Managing Resources',
-                            data: mockData.trends.managingResources,
-                            borderColor: 'rgba(59, 130, 246, 1)',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            tension: 0.3,
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Leading People',
-                            data: mockData.trends.leadingPeople,
-                            borderColor: 'rgba(16, 185, 129, 1)',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.3,
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Improving Unit',
-                            data: mockData.trends.improvingUnit,
-                            borderColor: 'rgba(245, 158, 11, 1)',
-                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                            tension: 0.3,
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Executing Mission',
-                            data: mockData.trends.executingMission,
-                            borderColor: 'rgba(139, 92, 246, 1)',
-                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                            tension: 0.3,
-                            borderWidth: 2
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: 60,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Readiness Score (%)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                boxWidth: 12,
-                                font: {
-                                    size: 10
-                                }
-                            }
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    }
-                }
-            });
-        }
-
-        // Toggle predictions in chart
-        function togglePredictions(showPredictions) {
-            const chartData = window.trendsChart.data;
-            const months = mockData.trends.months;
-            
-            if (showPredictions) {
-                // Add prediction months
-                chartData.labels = [...months, 'Jun', 'Jul'];
-                
-                // Update datasets with predictions
-                chartData.datasets.forEach((dataset, index) => {
-                    let predictedData;
-                    switch(index) {
-                        case 0:
-                            predictedData = mockData.trends.managingResources.concat(mockData.trends.predictions.managingResources);
-                            break;
-                        case 1:
-                            predictedData = mockData.trends.leadingPeople.concat(mockData.trends.predictions.leadingPeople);
-                            break;
-                        case 2:
-                            predictedData = mockData.trends.improvingUnit.concat(mockData.trends.predictions.improvingUnit);
-                            break;
-                        case 3:
-                            predictedData = mockData.trends.executingMission.concat(mockData.trends.predictions.executingMission);
-                            break;
-                    }
-                    dataset.data = predictedData;
-                    
-                    // Mark predictions with dashed line
-                    dataset.borderDash = [5, 5];
-                });
-            } else {
-                // Reset to original data without predictions
-                chartData.labels = months;
-                chartData.datasets.forEach((dataset, index) => {
-                    switch(index) {
-                        case 0:
-                            dataset.data = mockData.trends.managingResources;
-                            break;
-                        case 1:
-                            dataset.data = mockData.trends.leadingPeople;
-                            break;
-                        case 2:
-                            dataset.data = mockData.trends.improvingUnit;
-                            break;
-                        case 3:
-                            dataset.data = mockData.trends.executingMission;
-                            break;
-                    }
-                    // Remove dashed line style
-                    dataset.borderDash = undefined;
-                });
-            }
-            
-            window.trendsChart.update();
-        }
-
-        // Populate deficiency table
-        function populateDeficiencyTable() {
-            const tableBody = document.getElementById('deficiencyTableBody');
-            tableBody.innerHTML = '';
-            
-            mockData.deficiencies.forEach(deficiency => {
-                const row = document.createElement('tr');
-                row.className = 'border-b border-gray-200 hover:bg-gray-50';
-                
-                // Set row color based on risk level
-                let riskBadgeClass = 'bg-gray-100 text-gray-800';
-                if (deficiency.riskLevel === 'Critical') {
-                    riskBadgeClass = 'bg-red-100 text-red-800';
-                } else if (deficiency.riskLevel === 'Significant') {
-                    riskBadgeClass = 'bg-yellow-100 text-yellow-800';
-                } else if (deficiency.riskLevel === 'Minor') {
-                    riskBadgeClass = 'bg-blue-100 text-blue-800';
-                }
-                
-                // Set status badge color
-                let statusBadgeClass = 'bg-red-100 text-red-800';
-                if (deficiency.status === 'In Progress') {
-                    statusBadgeClass = 'bg-blue-100 text-blue-800';
-                } else if (deficiency.status === 'Completed') {
-                    statusBadgeClass = 'bg-green-100 text-green-800';
-                }
-                
-                // Build the row content
-                row.innerHTML = `
-                    <td class="py-2 px-3">${deficiency.id}</td>
-                    <td class="py-2 px-3">${deficiency.description}</td>
-                    <td class="py-2 px-3">${deficiency.squadron}</td>
-                    <td class="py-2 px-3"><span class="px-2 py-1 rounded-full text-xs ${statusBadgeClass}">${deficiency.status}</span></td>
-                    <td class="py-2 px-3"><span class="px-2 py-1 rounded-full text-xs ${riskBadgeClass}">${deficiency.riskLevel}</span></td>
-                    <td class="py-2 px-3">${formatDate(deficiency.dueDate)}</td>
-                    <td class="py-2 px-3">
-                        <button class="view-deficiency text-blue-600 hover:text-blue-800 mr-2" data-id="${deficiency.id}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="analyze-deficiency text-purple-600 hover:text-purple-800" data-id="${deficiency.id}">
-                            <i class="fas fa-brain"></i>
-                        </button>
-                    </td>
-                `;
-                
-                tableBody.appendChild(row);
-            });
-            
-            // Add event listeners to the view and analyze buttons
-            document.querySelectorAll('.view-deficiency').forEach(button => {
-                button.addEventListener('click', function() {
-                    const deficiencyId = this.getAttribute('data-id');
-                    viewDeficiencyDetails(deficiencyId);
-                });
-            });
-            
-            document.querySelectorAll('.analyze-deficiency').forEach(button => {
-                button.addEventListener('click', function() {
-                    const deficiencyId = this.getAttribute('data-id');
-                    analyzeDeficiency(deficiencyId);
-                });
-            });
-        }
-
-        // Format date to MM/DD/YYYY
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-        }
-
-        // View deficiency details (placeholder function)
-        function viewDeficiencyDetails(deficiencyId) {
-            alert(`Viewing deficiency details for ${deficiencyId}. This would open a detailed view in a production environment.`);
-        }
-
-        // Analyze deficiency with AI (placeholder function)
-        function analyzeDeficiency(deficiencyId) {
-            // Find the deficiency in the mock data
-            const deficiency = mockData.deficiencies.find(d => d.id === deficiencyId);
-            
-            if (deficiency) {
-                document.getElementById('aiInsightsOutput').innerHTML = `
-                    <div class="mb-2">
-                        <span class="font-semibold">Analysis of ${deficiencyId}:</span>
-                        <span class="text-sm px-2 py-1 rounded-full text-xs ${deficiency.riskLevel === 'Critical' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}">
-                            ${deficiency.riskLevel}
-                        </span>
-                    </div>
-                    <p class="mb-2"><strong>Root Cause Analysis:</strong> This deficiency appears to stem from inadequate standardization of processes and insufficient training on documentation requirements.</p>
-                    <p class="mb-2"><strong>Similar Issues:</strong> Found in 3 other squadrons with 76% correlation to previous findings.</p>
-                    <p><strong>Recommendation:</strong> Implement standardized digital documentation process with automated compliance checks.</p>
-                `;
-            }
-        }
-
-        // Set up all event listeners
-        function setupEventListeners() {
-            // Squadron filter change
-            document.getElementById('squadronFilter').addEventListener('change', function() {
-                // In a real app, this would filter the chart data by squadron
-                alert(`Filter changed to ${this.value}. This would update the chart data in a production environment.`);
-            });
-            
-            // Predictions toggle
-            document.getElementById('predictionsToggle').addEventListener('change', function() {
-                togglePredictions(this.checked);
-            });
-            
-            // Deficiency filter change
-            document.getElementById('deficiencyFilter').addEventListener('change', function() {
-                // In a real app, this would filter the deficiency table
-                // For demo purposes, we'll just show an alert
-                alert(`Filter changed to ${this.value}. This would filter the deficiency table in a production environment.`);
-            });
-            
-            // Generate corrective actions button
-            document.getElementById('generateActions').addEventListener('click', function() {
-                const recommendationsOutput = document.getElementById('recommendationsOutput');
-                recommendationsOutput.innerHTML = '<div class="flex justify-center my-2"><div class="spinner" style="display: inline-block;"></div></div>';
-                
-                // Simulate API call delay
-                setTimeout(() => {
-                    let recommendationsHTML = '';
-                    mockData.aiRecommendations.forEach((rec, index) => {
-                        recommendationsHTML += `
-                            <div class="mb-2 pb-2 ${index < mockData.aiRecommendations.length - 1 ? 'border-b border-gray-100' : ''}">
-                                <p>${index + 1}. ${rec}</p>
-                            </div>
-                        `;
-                    });
-                    recommendationsOutput.innerHTML = recommendationsHTML;
-                }, 1500);
-            });
-            
-            // Sync MICT button
-            document.getElementById('syncMICT').addEventListener('click', function() {
-                const spinner = document.getElementById('syncSpinner');
-                spinner.style.display = 'inline-block';
-                
-                // Disable the button during "sync"
-                this.disabled = true;
-                
-                // Simulate sync delay
-                setTimeout(() => {
-                    spinner.style.display = 'none';
-                    this.disabled = false;
-                    alert('MICT data successfully synchronized. Last sync: Today, ' + new Date().toLocaleTimeString());
-                }, 2000);
-            });
-            
-            // Generate IG Talking Points button
-            document.getElementById('generateTalkingPoints').addEventListener('click', function() {
-                const aiInsightsOutput = document.getElementById('aiInsightsOutput');
-                aiInsightsOutput.innerHTML = '<div class="flex justify-center my-2"><div class="spinner" style="display: inline-block;"></div></div>';
-                
-                // Simulate API call delay
-                setTimeout(() => {
-                    let talkingPointsHTML = '<p class="font-semibold mb-2">IG Talking Points:</p>';
-                    mockData.talkingPoints.forEach((point, index) => {
-                        talkingPointsHTML += `
-                            <div class="mb-2">
-                                <p>${index + 1}. ${point}</p>
-                            </div>
-                        `;
-                    });
-                    aiInsightsOutput.innerHTML = talkingPointsHTML;
-                }, 1500);
-            });
-            
-            // File upload handler
-            document.getElementById('fileUpload').addEventListener('change', function(e) {
-                if (e.target.files.length > 0) {
-                    const fileName = e.target.files[0].name;
-                    document.getElementById('summarizeReport').disabled = false;
-                    
-                    // Show file selected
-                    alert(`File "${fileName}" selected. In a production environment, this would be processed securely.`);
-                    
-                    // Enable the summarize button
-                    document.getElementById('summarizeReport').disabled = false;
-                }
-            });
-            
-            // Summarize Report button
-            document.getElementById('summarizeReport').addEventListener('click', function() {
-                const aiInsightsOutput = document.getElementById('aiInsightsOutput');
-                aiInsightsOutput.innerHTML = '<div class="flex justify-center my-2"><div class="spinner" style="display: inline-block;"></div></div>';
-                
-                // Simulate processing delay
-                setTimeout(() => {
-                    aiInsightsOutput.innerHTML = `
-                        <div class="mb-3">
-                            <p class="font-semibold mb-1">Document Analysis Complete</p>
-                            <p class="text-sm">Extracted 27 findings from document</p>
-                        </div>
-                        <div class="mb-2">
-                            <p class="font-semibold mb-1">Key Themes:</p>
-                            <ul class="list-disc pl-5 text-sm">
-                                ${mockData.aiInsights.keyThemes.map(theme => `<li>${theme}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div>
-                            <p class="font-semibold mb-1">Overall Assessment:</p>
-                            <p class="text-sm">${mockData.aiInsights.sentiment} - ${mockData.aiInsights.recommendedFocus}</p>
-                        </div>
-                    `;
-                }, 2000);
-            });
-            
-            // View selector change
-            document.getElementById('viewSelector').addEventListener('change', function() {
-                const view = this.value;
-                alert(`Switching to ${view} view. This would adjust visible panels and data in a production environment.`);
-                
-                // In a real implementation, this would change visible components based on role
-                if (view === 'commander') {
-                    // Show commander-specific panels
-                    document.querySelector('.card:nth-child(3)').style.display = 'none'; // Hide automation tools
-                } else if (view === 'squadron') {
-                    // Show squadron rep-specific panels
-                } else {
-                    // Reset to default IG view
-                    document.querySelectorAll('.card').forEach(card => {
-                        card.style.display = 'block';
-                    });
-                }
-            });
-        }
-        
-        // Add a CSS class for the toggle switch
-        document.head.insertAdjacentHTML('beforeend', `
-            <style>
-                .switch {
-                    position: relative;
-                    display: inline-block;
-                    width: 36px;
-                    height: 20px;
-                }
-                
-                .switch input {
-                    opacity: 0;
-                    width: 0;
-                    height: 0;
-                }
-                
-                .slider {
-                    position: absolute;
-                    cursor: pointer;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: #ccc;
-                    transition: .4s;
-                }
-                
-                .slider:before {
-                    position: absolute;
-                    content: "";
-                    height: 16px;
-                    width: 16px;
-                    left: 2px;
-                    bottom: 2px;
-                    background-color: white;
-                    transition: .4s;
-                }
-                
-                input:checked + .slider {
-                    background-color: #3B82F6;
-                }
-                
-                input:checked + .slider:before {
-                    transform: translateX(16px);
-                }
-                
-                .slider.round {
-                    border-radius: 34px;
-                }
-                
-                .slider.round:before {
-                    border-radius: 50%;
-                }
-            </style>
-        `);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
