@@ -1,4 +1,4 @@
-// Mock Data - Updated with Fictional 100 ARW UEI 2026 Data
+// Mock Data - Updated with Fictional 100 ARW UEI 2026 Data including more squadrons
 const mockData = {
     unit: {
         name: "100th Air Refueling Wing", // Updated unit name
@@ -6,40 +6,47 @@ const mockData = {
         commanderName: "Col. Jane Doe", // Fictional Commander
     },
     compliance: {
-        programs: 40, // Updated total programs
-        completedPrograms: 32, // Updated completed programs
-        completionPercentage: 80, // Updated completion percentage
-        openDeficiencies: 9, // Updated open deficiencies
-        deficienciesChange: -8, // Updated change data (improvement)
-        highRiskItems: 6, // Updated high risk items (Critical + Significant)
-        criticalItems: 2 // Updated critical items
+        programs: 45, // Updated total programs to reflect added squadrons
+        completedPrograms: 35, // Updated completed programs
+        completionPercentage: 78, // Adjusted completion percentage based on new total
+        openDeficiencies: 12, // Updated open deficiencies
+        deficienciesChange: -5, // Adjusted change data
+        highRiskItems: 8, // Updated high risk items (Critical + Significant)
+        criticalItems: 3 // Updated critical items
     },
     trends: {
         months: ["Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26"], // Updated months
-        managingResources: [82, 84, 83, 85, 86, 87], // Updated trend data
-        leadingPeople: [88, 89, 91, 90, 92, 93], // Updated trend data
-        improvingUnit: [75, 76, 78, 79, 81, 82], // Updated trend data
-        executingMission: [85, 87, 86, 88, 89, 90], // Updated trend data
+        managingResources: [80, 82, 81, 83, 84, 85], // Adjusted trend data slightly
+        leadingPeople: [87, 88, 89, 88, 90, 91], // Adjusted trend data slightly
+        improvingUnit: [74, 75, 77, 76, 78, 79], // Adjusted trend data slightly
+        executingMission: [84, 86, 85, 87, 88, 89], // Adjusted trend data slightly
         predictions: {
-            managingResources: [88, 89], // Updated prediction data
-            leadingPeople: [94, 95], // Updated prediction data
-            improvingUnit: [83, 84], // Updated prediction data
-            executingMission: [91, 92] // Updated prediction data
+            managingResources: [86, 87], // Updated prediction data
+            leadingPeople: [92, 93], // Updated prediction data
+            improvingUnit: [80, 81], // Updated prediction data
+            executingMission: [90, 91] // Updated prediction data
         },
         readinessCategories: ["Managing Resources", "Leading People", "Improving Unit", "Executing Mission"],
         readinessColors: ["blue", "green", "yellow", "purple"] // Colors remain the same
     },
     deficiencies: [
-        // Updated deficiencies based on the fictional report
-        { id: "IG-2026-003", description: "Critical safety procedure non-compliance in fuel cell maintenance.", squadron: "Maintenance", status: "Open", riskLevel: "Critical", dueDate: "2026-08-15" },
-        { id: "IG-2026-011", description: "Failure to track mandatory cyber awareness training.", squadron: "Operations", status: "Open", riskLevel: "Critical", dueDate: "2026-08-30" },
-        { id: "IG-2026-019", description: "Discrepancies in hazardous material handling and storage documentation.", squadron: "Logistics", status: "Open", riskLevel: "Significant", dueDate: "2026-09-10" },
-        { id: "IG-2026-022", description: "Inconsistent application of personnel readiness reporting standards.", squadron: "Support", status: "In Progress", riskLevel: "Significant", dueDate: "2026-09-01" },
-        { id: "IG-2026-035", description: "Gaps in maintaining up-to-date medical readiness records for deployed personnel.", squadron: "Medical", status: "Open", riskLevel: "Significant", dueDate: "2026-09-20" },
-        { id: "IG-2026-041", description: "Failure to conduct required quarterly physical security checks on critical network infrastructure nodes.", squadron: "Communications", status: "Open", riskLevel: "Significant", dueDate: "2026-08-25" },
-        { id: "IG-2026-055", description: "Minor discrepancies in facility maintenance logs.", squadron: "Support", status: "Closed", riskLevel: "Minor", dueDate: "2026-07-31" }, // Example of a closed deficiency
-        { id: "IG-2026-068", description: "Incomplete vehicle inspection checklists for a small percentage of fleet vehicles.", squadron: "Security Forces", status: "In Progress", riskLevel: "Minor", dueDate: "2026-08-10" },
-        { id: "IG-2026-072", description: "Minor errors found in a sample of travel voucher submissions.", squadron: "Support", status: "Open", riskLevel: "Minor", dueDate: "2026-08-05" }
+        // Updated deficiencies based on the fictional report and added squadrons
+        { id: "IG-2026-003", description: "Critical safety procedure non-compliance in fuel cell maintenance.", squadron: "100 MXS", status: "Open", riskLevel: "Critical", dueDate: "2026-08-15" }, // Assigned to 100 MXS
+        { id: "IG-2026-011", description: "Failure to track mandatory cyber awareness training.", squadron: "100 OSS", status: "Open", riskLevel: "Critical", dueDate: "2026-08-30" }, // Assigned to 100 OSS
+        { id: "IG-2026-019", description: "Discrepancies in hazardous material handling and storage documentation.", squadron: "100 LRS", status: "Open", riskLevel: "Significant", dueDate: "2026-09-10" }, // Assigned to 100 LRS (Logistics Readiness Squadron)
+        { id: "IG-2026-022", description: "Inconsistent application of personnel readiness reporting standards.", squadron: "100 FSS", status: "In Progress", riskLevel: "Significant", dueDate: "2026-09-01" }, // Assigned to 100 FSS
+        { id: "IG-2026-035", description: "Gaps in maintaining up-to-date medical readiness records for deployed personnel.", squadron: "100 MDG", status: "Open", riskLevel: "Significant", dueDate: "2026-09-20" }, // Assigned to 100 MDG (Medical Group)
+        { id: "IG-2026-041", description: "Failure to conduct required quarterly physical security checks on critical network infrastructure nodes.", squadron: "100 CS", status: "Open", riskLevel: "Significant", dueDate: "2026-08-25" }, // Assigned to 100 CS (Communications Squadron)
+        { id: "IG-2026-055", description: "Minor discrepancies in facility maintenance logs.", squadron: "100 CES", status: "Closed", riskLevel: "Minor", dueDate: "2026-07-31" }, // Assigned to 100 CES (Civil Engineer Squadron)
+        { id: "IG-2026-068", description: "Incomplete vehicle inspection checklists for a small percentage of fleet vehicles.", squadron: "100 SFS", status: "In Progress", riskLevel: "Minor", dueDate: "2026-08-10" }, // Assigned to 100 SFS (Security Forces Squadron)
+        { id: "IG-2026-072", description: "Minor errors found in a sample of travel voucher submissions.", squadron: "100 CPTS", status: "Open", riskLevel: "Minor", dueDate: "2026-08-05" }, // Assigned to 100 CPTS (Comptroller Squadron)
+        // Added deficiencies for requested squadrons
+        { id: "IG-2026-080", description: "Discrepancies in dining facility sanitation logs.", squadron: "100 FSS", status: "Open", riskLevel: "Minor", dueDate: "2026-09-05" },
+        { id: "IG-2026-081", description: "Aircrew flight record documentation incomplete.", squadron: "100 OSS", status: "In Progress", riskLevel: "Significant", dueDate: "2026-09-18" },
+        { id: "IG-2026-082", description: "Tool kit inventory discrepancies in multiple sections.", squadron: "100 MXS", status: "Open", riskLevel: "Significant", dueDate: "2026-09-25" },
+        { id: "IG-2026-083", description: "Missing entries in physical training exemption waivers.", squadron: "100 FSS", status: "Closed", riskLevel: "Minor", dueDate: "2026-07-28" },
+        { id: "IG-2026-084", description: "Airfield driving records not updated for new personnel.", squadron: "100 OSS", status: "Open", riskLevel: "Minor", dueDate: "2026-09-12" },
+         { id: "IG-2026-085", description: "Hazardous waste disposal procedures not followed consistently.", squadron: "100 MXS", status: "In Progress", riskLevel: "Critical", dueDate: "2026-09-30" } // Added another critical for MXS
     ],
     aiRecommendations: [
         // Updated recommendations based on new deficiencies
@@ -48,29 +55,37 @@ const mockData = {
         "Conduct a comprehensive audit of all hazardous material storage areas and update documentation to match current inventory and regulations.",
         "Standardize personnel readiness reporting procedures across all squadrons and provide targeted training to unit administrators.",
         "Develop a digital checklist and reporting system for physical security checks on critical infrastructure.",
-        "Review and streamline facility maintenance logging procedures for clarity and ease of use."
+        "Review and streamline facility maintenance logging procedures for clarity and ease of use.",
+        "Implement a daily checklist for dining facility sanitation logs with mandatory supervisor sign-off.",
+        "Conduct a Wing-wide review of aircrew flight record documentation processes and provide unit-level training.",
+        "Initiate a 100% inventory of all tool kits in 100 MXS and reconcile discrepancies; implement a digital tracking system.",
+        "Establish a quarterly audit process for physical training exemption waivers.",
+        "Update and disseminate airfield driving regulations and ensure all personnel requiring access receive timely training.",
+        "Reinforce hazardous waste disposal training and conduct unannounced spot checks in maintenance areas."
     ],
     aiInsights: {
-        // Updated insights based on the fictional report
+        // Updated insights based on the fictional report and added deficiencies
         keyThemes: [
-            "Critical procedural compliance gaps in maintenance and cyber security require immediate attention.",
-            "Data integrity issues are impacting readiness reporting and accountability.",
-            "Opportunities exist to leverage technology for improved tracking and documentation.",
-            "Overall operational performance remains strong despite compliance challenges."
+            "Critical procedural compliance gaps persist in maintenance and cyber security areas.",
+            "Documentation and record-keeping inconsistencies are widespread across multiple squadrons (FSS, OSS, MXS, LRS, MDG).",
+            "Opportunities exist to leverage technology for improved tracking, documentation, and compliance.",
+            "Operational readiness remains high, but foundational compliance issues pose potential risks.",
+            "Specific focus needed on maintenance safety and personnel readiness data accuracy."
         ],
-        sentiment: "Generally Positive with Critical Concerns", // Updated sentiment
-        recommendedFocus: "Critical compliance gaps (maintenance/cyber) and data accuracy." // Updated focus
+        sentiment: "Generally Positive with Significant Compliance Concerns", // Updated sentiment
+        recommendedFocus: "Addressing critical safety and cyber gaps; standardizing documentation and tracking processes." // Updated focus
     },
     talkingPoints: [
-        // Updated talking points based on the fictional report
-        "The 100 ARW has achieved an 'Effective' UEI rating, a testament to their strong operational focus and dedicated personnel.",
-        "While proud of our strengths, we must address critical deficiencies in fuel cell safety and cyber training with urgency.",
-        "Efforts are underway to improve data accuracy in readiness reporting and streamline documentation processes identified during the inspection.",
-        "We are exploring automated tools to enhance tracking and compliance in key areas highlighted by the IG."
+        // Updated talking points based on the fictional report and added deficiencies
+        "The 100 ARW achieved an 'Effective' UEI rating, showcasing strong operational performance.",
+        "We have identified critical deficiencies in fuel cell maintenance safety and cyber training that require immediate, aggressive action.",
+        "Documentation and record-keeping challenges were noted across several squadrons; we are implementing measures to improve accuracy and compliance.",
+        "Automated tools are being explored to enhance tracking and streamline processes, particularly in maintenance and personnel management.",
+        "Our focus remains on reinforcing foundational compliance while maintaining our high state of operational readiness."
     ],
     automationStatus: {
-        lastMICTSync: "Today, 10:15", // Simulated update
-        lastIGEMSUpdate: "Today, 09:00", // Simulated update
+        lastMICTSync: "Today, 11:30", // Simulated update
+        lastIGEMSUpdate: "Today, 10:00", // Simulated update
         aiModelStatus: "Operational" // Status remains operational
     }
 };
@@ -126,7 +141,21 @@ function populateComplianceSnapshot() {
     completionText.textContent = compliance.completionPercentage + '% Complete';
     programsText.textContent = `${compliance.completedPrograms} of ${compliance.programs} Programs`;
     deficienciesCount.textContent = compliance.openDeficiencies;
-    deficienciesChange.textContent = compliance.deficienciesChange;
+    deficienciesChange.textContent = compliance.deficienciesChange; // Display the change value
+    // Determine if the change is an increase or decrease for the arrow icon
+    const changeIcon = deficienciesChange.previousElementSibling; // Assuming the icon is the previous sibling
+     if (compliance.deficienciesChange > 0) {
+         changeIcon.classList.remove('fa-arrow-down', 'text-green-500');
+         changeIcon.classList.add('fa-arrow-up', 'text-red-500');
+     } else if (compliance.deficienciesChange < 0) {
+         changeIcon.classList.remove('fa-arrow-up', 'text-red-500');
+         changeIcon.classList.add('fa-arrow-down', 'text-green-500');
+     } else {
+         changeIcon.classList.remove('fa-arrow-up', 'fa-arrow-down', 'text-red-500', 'text-green-500');
+         // You might add a neutral icon or just leave it as it is if no change
+     }
+
+
     highRiskCount.textContent = compliance.highRiskItems;
     criticalCount.textContent = compliance.criticalItems;
 
