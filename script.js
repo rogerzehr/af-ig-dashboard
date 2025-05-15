@@ -1,68 +1,77 @@
-// Mock Data - Replace with actual data fetching logic in a real application
+// Mock Data - Updated with Fictional 100 ARW UEI 2026 Data
 const mockData = {
     unit: {
-        name: "325th Fighter Wing",
-        location: "Tyndall AFB",
-        commanderName: "Col. James Wilson",
+        name: "100th Air Refueling Wing", // Updated unit name
+        location: "Mildenhall AB, UK", // Updated location
+        commanderName: "Col. Jane Doe", // Fictional Commander
     },
     compliance: {
-        programs: 35,
-        completedPrograms: 24,
-        completionPercentage: 68,
-        openDeficiencies: 17,
-        deficienciesChange: 4, // Added change data
-        highRiskItems: 5,
-        criticalItems: 2
+        programs: 40, // Updated total programs
+        completedPrograms: 32, // Updated completed programs
+        completionPercentage: 80, // Updated completion percentage
+        openDeficiencies: 9, // Updated open deficiencies
+        deficienciesChange: -8, // Updated change data (improvement)
+        highRiskItems: 6, // Updated high risk items (Critical + Significant)
+        criticalItems: 2 // Updated critical items
     },
     trends: {
-        months: ["Dec", "Jan", "Feb", "Mar", "Apr", "May"],
-        managingResources: [78, 80, 82, 79, 83, 85],
-        leadingPeople: [85, 87, 90, 91, 89, 92],
-        improvingUnit: [72, 70, 74, 75, 77, 78],
-        executingMission: [80, 82, 84, 85, 87, 88],
+        months: ["Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26"], // Updated months
+        managingResources: [82, 84, 83, 85, 86, 87], // Updated trend data
+        leadingPeople: [88, 89, 91, 90, 92, 93], // Updated trend data
+        improvingUnit: [75, 76, 78, 79, 81, 82], // Updated trend data
+        executingMission: [85, 87, 86, 88, 89, 90], // Updated trend data
         predictions: {
-            managingResources: [87, 89], // Adjusted prediction data
-            leadingPeople: [93, 94],
-            improvingUnit: [80, 82],
-            executingMission: [90, 91]
+            managingResources: [88, 89], // Updated prediction data
+            leadingPeople: [94, 95], // Updated prediction data
+            improvingUnit: [83, 84], // Updated prediction data
+            executingMission: [91, 92] // Updated prediction data
         },
         readinessCategories: ["Managing Resources", "Leading People", "Improving Unit", "Executing Mission"],
-        readinessColors: ["blue", "green", "yellow", "purple"] // Added colors for categories
+        readinessColors: ["blue", "green", "yellow", "purple"] // Colors remain the same
     },
     deficiencies: [
-        { id: "IG-2025-001", description: "Safety equipment inspection records incomplete", squadron: "Fighter", status: "Open", riskLevel: "Critical", dueDate: "2025-05-30" },
-        { id: "IG-2025-007", description: "Training documentation non-compliant with AFI 36-2651", squadron: "Maintenance", status: "Open", riskLevel: "Significant", dueDate: "2025-06-15" },
-        { id: "IG-2025-013", description: "Security protocols for restricted area access not followed", squadron: "Support", status: "In Progress", riskLevel: "Critical", dueDate: "2025-05-22" },
-        { id: "IG-2025-018", description: "Radiation safety procedures not properly documented", squadron: "Medical", status: "Open", riskLevel: "Significant", dueDate: "2025-06-10" },
-        { id: "IG-2025-024", description: "Tool accountability process deficiencies", squadron: "Maintenance", status: "In Progress", riskLevel: "Significant", dueDate: "2025-05-25" },
-        { id: "IG-2025-026", description: "Emergency response checklists outdated", squadron: "All", status: "Open", riskLevel: "Significant", dueDate: "2025-06-05" },
-        { id: "IG-2025-029", description: "FOD prevention program documentation incomplete", squadron: "Maintenance", status: "Open", riskLevel: "Minor", dueDate: "2025-06-20" }
+        // Updated deficiencies based on the fictional report
+        { id: "IG-2026-003", description: "Critical safety procedure non-compliance in fuel cell maintenance.", squadron: "Maintenance", status: "Open", riskLevel: "Critical", dueDate: "2026-08-15" },
+        { id: "IG-2026-011", description: "Failure to track mandatory cyber awareness training.", squadron: "Operations", status: "Open", riskLevel: "Critical", dueDate: "2026-08-30" },
+        { id: "IG-2026-019", description: "Discrepancies in hazardous material handling and storage documentation.", squadron: "Logistics", status: "Open", riskLevel: "Significant", dueDate: "2026-09-10" },
+        { id: "IG-2026-022", description: "Inconsistent application of personnel readiness reporting standards.", squadron: "Support", status: "In Progress", riskLevel: "Significant", dueDate: "2026-09-01" },
+        { id: "IG-2026-035", description: "Gaps in maintaining up-to-date medical readiness records for deployed personnel.", squadron: "Medical", status: "Open", riskLevel: "Significant", dueDate: "2026-09-20" },
+        { id: "IG-2026-041", description: "Failure to conduct required quarterly physical security checks on critical network infrastructure nodes.", squadron: "Communications", status: "Open", riskLevel: "Significant", dueDate: "2026-08-25" },
+        { id: "IG-2026-055", description: "Minor discrepancies in facility maintenance logs.", squadron: "Support", status: "Closed", riskLevel: "Minor", dueDate: "2026-07-31" }, // Example of a closed deficiency
+        { id: "IG-2026-068", description: "Incomplete vehicle inspection checklists for a small percentage of fleet vehicles.", squadron: "Security Forces", status: "In Progress", riskLevel: "Minor", dueDate: "2026-08-10" },
+        { id: "IG-2026-072", description: "Minor errors found in a sample of travel voucher submissions.", squadron: "Support", status: "Open", riskLevel: "Minor", dueDate: "2026-08-05" }
     ],
     aiRecommendations: [
-        "Implement a centralized tracking system for safety equipment inspections with automated reminders.",
-        "Conduct specialized training session for all Unit Training Managers on AFI 36-2651 compliance requirements.",
-        "Develop a digital checklist app for security personnel to ensure all protocols are followed consistently.",
-        "Establish monthly radiation safety documentation review cycle with designated officer accountability.",
-        "Deploy barcode-based tool accountability system synced with maintenance management system."
+        // Updated recommendations based on new deficiencies
+        "Mandate hands-on refresher training for all fuel cell maintenance personnel focusing on TO adherence.",
+        "Implement an automated tracking system for mandatory training completion, integrated with network access controls.",
+        "Conduct a comprehensive audit of all hazardous material storage areas and update documentation to match current inventory and regulations.",
+        "Standardize personnel readiness reporting procedures across all squadrons and provide targeted training to unit administrators.",
+        "Develop a digital checklist and reporting system for physical security checks on critical infrastructure.",
+        "Review and streamline facility maintenance logging procedures for clarity and ease of use."
     ],
     aiInsights: {
+        // Updated insights based on the fictional report
         keyThemes: [
-            "Documentation processes need standardization across all squadrons",
-            "Digital transformation of manual inspection processes would improve compliance",
-            "Training deficiencies correlate with higher risk in operational areas"
+            "Critical procedural compliance gaps in maintenance and cyber security require immediate attention.",
+            "Data integrity issues are impacting readiness reporting and accountability.",
+            "Opportunities exist to leverage technology for improved tracking and documentation.",
+            "Overall operational performance remains strong despite compliance challenges."
         ],
-        sentiment: "Moderately Concerning",
-        recommendedFocus: "Training documentation and safety protocol implementation"
+        sentiment: "Generally Positive with Critical Concerns", // Updated sentiment
+        recommendedFocus: "Critical compliance gaps (maintenance/cyber) and data accuracy." // Updated focus
     },
     talkingPoints: [
-        "Critical safety inspection documentation gaps identified across 3 squadrons - recommend Wing-level standardized process implementation",
-        "Training record compliance improved 12% over last quarter but still below MAJCOM average - targeted UTM training in progress",
-        "Automated tracking tools demonstrating 30% reduction in recurring deficiencies where implemented - recommend expanded deployment"
+        // Updated talking points based on the fictional report
+        "The 100 ARW has achieved an 'Effective' UEI rating, a testament to their strong operational focus and dedicated personnel.",
+        "While proud of our strengths, we must address critical deficiencies in fuel cell safety and cyber training with urgency.",
+        "Efforts are underway to improve data accuracy in readiness reporting and streamline documentation processes identified during the inspection.",
+        "We are exploring automated tools to enhance tracking and compliance in key areas highlighted by the IG."
     ],
     automationStatus: {
-        lastMICTSync: "Today, 08:45",
-        lastIGEMSUpdate: "Yesterday, 16:30",
-        aiModelStatus: "Operational"
+        lastMICTSync: "Today, 10:15", // Simulated update
+        lastIGEMSUpdate: "Today, 09:00", // Simulated update
+        aiModelStatus: "Operational" // Status remains operational
     }
 };
 
@@ -122,12 +131,17 @@ function populateComplianceSnapshot() {
     criticalCount.textContent = compliance.criticalItems;
 
     // Populate AI Summary
-    let summaryHtml = '<p><strong>Top 3 Recurring Issues:</strong></p><ol class="list-decimal pl-5 mt-1">';
-    mockData.aiInsights.keyThemes.forEach(theme => {
-        summaryHtml += `<li>${theme}</li>`;
-    });
-    summaryHtml += '</ol>';
-    aiSummary.innerHTML = summaryHtml;
+    let summaryHtml = '<p><strong>Top Recurring Issues:</strong></p><ol class="list-decimal pl-5 mt-1">'; // Adjusted title slightly
+    if (mockData.aiInsights && mockData.aiInsights.keyThemes && mockData.aiInsights.keyThemes.length > 0) {
+        mockData.aiInsights.keyThemes.forEach(theme => {
+            summaryHtml += `<li>${theme}</li>`;
+        });
+        summaryHtml += '</ol>';
+         aiSummary.innerHTML = summaryHtml;
+    } else {
+         aiSummary.innerHTML = '<p class="italic text-gray-400">AI summary not available.</p>';
+    }
+
 }
 
 // Function to populate Automation Status data
@@ -137,16 +151,16 @@ function populateAutomationStatus() {
 
     automationStatusDiv.innerHTML = `
         <div class="flex items-center mb-1">
-            <div class="w-3 h-3 rounded-full ${status.lastMICTSync !== 'N/A' ? 'bg-green-500' : 'bg-gray-400'} mr-2"></div>
-            <span>Last MICT Sync: ${status.lastMICTSync}</span>
+            <div class="w-3 h-3 rounded-full ${status.lastMICTSync && status.lastMICTSync !== 'N/A' ? 'bg-green-500' : 'bg-gray-400'} mr-2"></div>
+            <span>Last MICT Sync: ${status.lastMICTSync || 'N/A'}</span>
         </div>
         <div class="flex items-center mb-1">
-            <div class="w-3 h-3 rounded-full ${status.lastIGEMSUpdate !== 'N/A' ? 'bg-yellow-500' : 'bg-gray-400'} mr-2"></div>
-            <span>Last IGEMS Update: ${status.lastIGEMSUpdate}</span>
+            <div class="w-3 h-3 rounded-full ${status.lastIGEMSUpdate && status.lastIGEMSUpdate !== 'N/A' ? 'bg-yellow-500' : 'bg-gray-400'} mr-2"></div>
+            <span>Last IGEMS Update: ${status.lastIGEMSUpdate || 'N/A'}</span>
         </div>
         <div class="flex items-center">
-            <div class="w-3 h-3 rounded-full ${status.aiModelStatus === 'Operational' ? 'bg-green-500' : 'bg-red-500'} mr-2"></div>
-            <span>AI Model Status: ${status.aiModelStatus}</span>
+            <div class="w-3 h-3 rounded-full ${status.aiModelStatus === 'Operational' ? 'bg-green-500' : (status.aiModelStatus === 'Unknown' ? 'bg-gray-400' : 'bg-red-500')} mr-2"></div>
+            <span>AI Model Status: ${status.aiModelStatus || 'Unknown'}</span>
         </div>
     `;
 }
@@ -156,21 +170,25 @@ function populateAIInsights() {
     const aiInsightsOutput = document.getElementById('aiInsightsOutput');
     const insights = mockData.aiInsights;
 
-    aiInsightsOutput.innerHTML = `
-        <p><strong>Sentiment:</strong> ${insights.sentiment}</p>
-        <p class="mt-1"><strong>Recommended Focus:</strong> ${insights.recommendedFocus}</p>
-        <p class="mt-2"><strong>Key Themes:</strong></p>
-        <ul class="list-disc pl-5 mt-1">
-            ${insights.keyThemes.map(theme => `<li>${theme}</li>`).join('')}
-        </ul>
-    `;
+    if (insights && insights.keyThemes && insights.keyThemes.length > 0) {
+         aiInsightsOutput.innerHTML = `
+            <p><strong>Sentiment:</strong> ${insights.sentiment || 'N/A'}</p>
+            <p class="mt-1"><strong>Recommended Focus:</strong> ${insights.recommendedFocus || 'N/A'}</p>
+            <p class="mt-2"><strong>Key Themes:</strong></p>
+            <ul class="list-disc pl-5 mt-1">
+                ${insights.keyThemes.map(theme => `<li>${theme}</li>`).join('')}
+            </ul>
+        `;
+    } else {
+         aiInsightsOutput.innerHTML = '<p class="italic text-gray-400">Upload a document or select a deficiency to see AI analysis.</p>';
+    }
 }
 
 // Function to populate AI Recommendations
 function populateAIRemendations() {
     const recommendationsOutput = document.getElementById('recommendationsOutput');
     if (mockData.aiRecommendations && mockData.aiRecommendations.length > 0) {
-        let recommendationsHtml = '<ul class="list-disc pl-5">';
+        let recommendationsHtml = '<p><strong>AI Recommendations:</strong></p><ul class="list-disc pl-5 mt-1">'; // Added title
         mockData.aiRecommendations.forEach(rec => {
             recommendationsHtml += `<li>${rec}</li>`;
         });
@@ -374,7 +392,7 @@ function togglePredictions(showPredictions) {
 
     if (showPredictions) {
         // Add prediction months
-        chartData.labels = [...months, 'Jun', 'Jul']; // Assuming 2 months of prediction
+        chartData.labels = [...months, 'Jul 26', 'Aug 26']; // Assuming 2 months of prediction
 
         // Update datasets with predictions
         chartData.datasets.forEach((dataset, index) => {
@@ -510,17 +528,16 @@ function filterDeficiencies(riskLevel) {
 // Function to populate squadron filter options dynamically
 function populateSquadronFilter() {
     const squadronFilterSelect = document.getElementById('squadronFilter');
-    const squadrons = [...new Set(mockData.deficiencies.map(def => def.squadron))]; // Get unique squadrons
-    squadrons.sort(); // Sort squadrons alphabetically
+    // Get unique squadrons from deficiencies and add 'All' option
+    const squadrons = ['All', ...new Set(mockData.deficiencies.map(def => def.squadron))];
+    squadrons.sort(); // Sort squadrons alphabetically (keeping 'All' first if it exists)
 
-    // Add 'All Squadrons' option first
-    squadronFilterSelect.innerHTML = '<option value="all">All Squadrons</option>';
+    squadronFilterSelect.innerHTML = ''; // Clear existing options
 
-    // Add unique squadron options
     squadrons.forEach(squadron => {
         const option = document.createElement('option');
-        option.value = squadron.toLowerCase().replace(/\s+/g, ''); // Create a simple value
-        option.textContent = squadron;
+        option.value = squadron === 'All' ? 'all' : squadron.toLowerCase().replace(/\s+/g, ''); // 'all' value for All
+        option.textContent = squadron === 'All' ? 'All Squadrons' : squadron;
         squadronFilterSelect.appendChild(option);
     });
 }
@@ -610,11 +627,16 @@ function setupEventListeners() {
         aiInsightsOutput.innerHTML = '<p class="italic text-gray-400">Generating talking points...</p>';
         setTimeout(() => {
             let tpHtml = '<p><strong>IG Talking Points:</strong></p><ul class="list-disc pl-5 mt-1">';
-            mockData.talkingPoints.forEach(point => {
-                tpHtml += `<li>${point}</li>`;
-            });
-            tpHtml += '</ul>';
-            aiInsightsOutput.innerHTML = tpHtml;
+            if (mockData.talkingPoints && mockData.talkingPoints.length > 0) {
+                 mockData.talkingPoints.forEach(point => {
+                    tpHtml += `<li>${point}</li>`;
+                });
+                tpHtml += '</ul>';
+                aiInsightsOutput.innerHTML = tpHtml;
+            } else {
+                 aiInsightsOutput.innerHTML = '<p class="italic text-gray-400">No talking points generated.</p>';
+            }
+
              alert('IG Talking Points generated (using mock data).'); // Using alert for simulation
         }, 1500); // Simulate a delay
     });
