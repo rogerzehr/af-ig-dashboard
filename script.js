@@ -613,11 +613,23 @@ function setupEventListeners() {
 
     // Summarize Report Button
     document.getElementById('summarizeReport').addEventListener('click', function() {
-        // TODO: Implement report summarization logic
+        // Simulate report summarization
         const aiInsightsOutput = document.getElementById('aiInsightsOutput');
         aiInsightsOutput.innerHTML = '<p class="italic text-gray-400">Summarizing report...</p>';
-         alert('Summarize report functionality not implemented.'); // Using alert for simulation
-         // After summarization, you would populate aiInsightsOutput with the summary
+        setTimeout(() => {
+             // For simulation, let's just display the key themes from mockData.aiInsights
+             let summaryHtml = '<p><strong>Simulated Report Summary:</strong></p><ul class="list-disc pl-5 mt-1">';
+             if (mockData.aiInsights && mockData.aiInsights.keyThemes && mockData.aiInsights.keyThemes.length > 0) {
+                 mockData.aiInsights.keyThemes.forEach(theme => {
+                     summaryHtml += `<li>${theme}</li>`;
+                 });
+                 summaryHtml += '</ul>';
+                 aiInsightsOutput.innerHTML = summaryHtml;
+             } else {
+                 aiInsightsOutput.innerHTML = '<p class="italic text-gray-400">Could not generate summary (no key themes in mock data).</p>';
+             }
+             alert('Report summarized (using mock data key themes).'); // Using alert for simulation
+        }, 1500); // Simulate a delay
     });
 
     // Generate IG Talking Points Button
