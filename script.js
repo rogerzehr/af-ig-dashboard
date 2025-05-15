@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Populate initial data
     populateComplianceSnapshot();
     populateAutomationStatus();
-    populateAIInsights();
-    populateAIRemendations();
+    populateAIInsights(); // Populate initial AI Insights
+    populateAIRemendations(); // Populate initial AI Recommendations
 
     // Initialize collapsible panels
     initializeCollapsiblePanels();
@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Populate squadron filter options
     populateSquadronFilter();
+
+     // Initial population of unit name
+    document.getElementById('unitName').textContent = mockData.unit.name;
 });
 
 // Function to populate Compliance Snapshot data
@@ -634,6 +637,5 @@ function setupEventListeners() {
         }
     });
 
-     // Initial population of unit name
-    document.getElementById('unitName').textContent = mockData.unit.name;
+
 }
